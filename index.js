@@ -2,6 +2,7 @@ const { Transform } = require('stream')
 const PluginError = require('plugin-error')
 const MarkdownIt = require('markdown-it')
 const plainText = require('markdown-it-plain-text')
+const replaceExtension = require('replace-ext')
 
 const PLUGIN_NAME = 'gulp-klartext'
 
@@ -27,6 +28,8 @@ module.exports = (options = {}) =>
 
       if (file.isBuffer())
       {
+        file.path = replaceExtension(file.path, options.ext)
+        
         markdown.render( file.contents.toString() )
         file.contents = Buffer.from(markdown.plainText)
         return callback(null, file)
