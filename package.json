@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Extract plain text from markdown files",
   "license": "MIT",
-  "repository": "https://github.com/mgerzabek/gulp-liquid-js",
+  "repository": "https://github.com/mgerzabek/gulp-klartext",
   "author": {
     "name": "Michael Gerzabek",
     "email": "michael.gerzabek@gmail.com"
