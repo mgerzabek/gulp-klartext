@@ -6,8 +6,17 @@ const replaceExtension = require('replace-ext')
 
 const PLUGIN_NAME = 'gulp-klartext'
 
+const defaultOptions = {
+  ext: '.txt'
+}
+
 module.exports = (options = {}) =>
 {
+
+  options = {
+    ...defaultOptions,
+    ...options
+  }
 
   return new Transform({
     objectMode: true,
@@ -29,7 +38,7 @@ module.exports = (options = {}) =>
       if (file.isBuffer())
       {
         file.path = replaceExtension(file.path, options.ext)
-        
+
         markdown.render( file.contents.toString() )
         file.contents = Buffer.from(markdown.plainText)
         return callback(null, file)
